@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>LearnEd Blog</title>
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'blog/userAccount.css' %}">
+</head>
+<body>
+	<div id="nav">
+	<nav>
+		<ul>
+			<li id='title'><a href="{% url 'blog:search' %}">LearnEd</a></li>
+			<li id = 'write'><a href="{% url 'blog:writeBlog1' %}">Write</a></li>
+			<li id='aboutUs'><a href="{% url 'blog:aboutUs' %}">About Us</a></li>
+			{% if user.is_authenticated %}
+			<li id = 'user' ><a href="{% url 'blog:userAccount'%}">{{user.username}}</a>
+			<div class='dropdown-content'>
+				<ul>
+					<li><a href="{% url 'blog:userBlogs' %}">Your Blogs </a></li>
+					<li><a href="{% url 'blog:userDrafts' %}">Drafts </a></li>
+					<li><a href="#">Bookmarks</a></li>
+					<li><a href="{% url 'blog:logout' %}">LogOut </a></li>
+				</ul>
+			</div>
+			</li>
+			{% else %}
+			<li id='login'><a href="{% url 'blog:login' %}">Login</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+	</div>
+	
+	{% if user.is_authenticated %}
+	<div class='userAccount'>
+		<div class='header'>
+			<h1>Welcome {{user.username}}</h1>
+		</div>
+
+		<div class='userInfo'>
+			<dl>
+				<dt>Username:</dt>
+				<dd>{{user.username}}</dd>
+				<dt>Name:</dt>
+				<dd>{{user.first_name}} {{user.last_name}}</dd>
+				<dt>Email:</dt>
+				<dd>{{user.email}}</dd>
+				<dt>Employment:</dt>
+				{%if profile.employment %}
+				<dd>{{profile.employment}}</dd>
+				{% else %}
+				<dd>_</dd>
+				{% endif %}
+				<dt>Qualifications:</dt>
+				{%if profile.qualification %}
+				<dd>{{profile.qualification}}</dd>
+				{% else %}
+				<dd>_</dd>
+				{% endif %}
+				<dt>Education:</dt>
+				{%if profile.education %}
+				<dd>{{profile.education}}</dd>
+				{% else %}
+				<dd> _</dd>
+				{% endif %}
+			</dl>
+		</div>
+		<div id='editInfo'>
+			<ul>
+				<li><a href="{% url 'blog:edit' %}">Edit Info</a></li>
+			</ul>	
+		</div>
+	</div>
+	{% else %}
+		<a href="{% url 'blog:login' %}">Login</a>
+	{% endif %}
+	<div class='foot'>
+		<footer>
+			<p id='contactInfo'><span id='contact'>Contact Us</span><br /><a href="mailto:mail2learned@gmail.com">mail2learned@gmail.com</a></p>
+			<p id='copyrights'>&copy 2020 by LearnEd. All rights reserved.</p>
+		</footer>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+

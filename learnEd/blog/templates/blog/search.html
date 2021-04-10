@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>LearnEd</title>
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'blog/search.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div id="nav">
+	<nav>
+		<ul>
+			<li id='title'><a href="">LearnEd</a></li>
+			<li id="search-icon"><a id="s-i"><img id="s-img" src="{% static 'blog/images/searchIcon.png' %}" alt="search icon" style="width:20px;"></a></li>
+			<li id = 'write'><a href="{% url 'blog:writeBlog1' %}" >Write</a></li>
+			<li id='aboutUs'><a href="{% url 'blog:aboutUs' %}">About Us</a></li>
+			{% if user.is_authenticated %}
+			<li id = 'user' ><a href="{% url 'blog:userAccount'%}">{{user.username}}</a>
+			<div class='dropdown-content'>
+				<ul>
+					<li><a href="{% url 'blog:userBlogs' %}">Your Blogs</a></li>
+					<li><a href="{% url 'blog:userDrafts' %}">Drafts </a></li>
+					<li><a href="#">Bookmarks</a></li>
+					<li><a href="{% url 'blog:logout' %}">LogOut </a></li>
+				</ul>
+			</div>
+			</li>
+			{% else %}
+			<li id='login'><a href="{% url 'blog:login' %}">Login</a></li>
+			{% endif %}
+		</ul>
+
+		<div id="search-div" style="display: none;" align="center" tabindex="0">
+			<div id="a3">
+
+				<div id="b3">
+					<div id="c3"><img src="{% static 'blog/images/searchIconBlack.png' %}" alt="" id='b3Img'></div>
+					<div id="d3">
+						<input id="search-inp" type="search" name="search" autocomplete="off">
+					</div>
+				</div>
+				<div id="suggestions1">
+				</div>
+			</div>
+		</div>
+
+	</nav>
+	</div>
+	<div id="search">
+		<h1 id='moto'><img src = "{% static 'blog/images/learnEdLogo.png' %}" alt = 'LearnEd' width="400px" ></h1>
+		<form action="{% url 'blog:searchProcess' %}" method="post">
+			{% csrf_token %}
+			<ul>
+				<li>
+					<input name="title" type="search" class='textInput' id='skill' autocomplete='off'>
+				</li>
+				<li id="suggestions"></li>
+				<li><input type='submit' id="submit" name="submit" value='search' style="display:none"></li>
+			</ul>
+		</form>
+		<script src = "{% static 'blog/search.js' %}"></script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head> 
+	<meta charset='utf-8' />
+	<title>LearnEd</title>
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'blog/writeBlog.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="nav">
+	<nav>
+		<ul>
+			<li id='title'><a href="{% url 'blog:search' %}">LearnEd</a></li>
+			<li id = 'write'><a href="{% url 'blog:writeBlog1' %}">Write</a></li>
+			<li id='aboutUs'><a href="{% url 'blog:aboutUs' %}">About Us</a></li>
+			{% if user.is_authenticated %}
+			<li id = 'user' ><a href="{% url 'blog:userAccount'%}">{{user.username}}</a>
+			<div class='dropdown-content'>
+				<ul>
+					<li><a href="{% url 'blog:userBlogs' %}">Your Blogs </a></li>
+					<li><a href="{% url 'blog:userDrafts' %}">Drafts </a></li>
+					<li><a href="#">Bookmarks</a></li>
+					<li><a href="{% url 'blog:logout' %}">LogOut </a></li>
+				</ul>
+			</div>
+			</li>
+			{% else %}
+			<li id='login'><a href="{% url 'blog:login' %}">Login</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+	</div>
+
+	<!--blog Form-->
+	<div class='blogForm'>
+		<form action="{% url 'blog:addBlog' %}" method='post'>
+			{% csrf_token %}
+			<div class='header'>
+				{% if topic %}
+					<input type = 'text' name="topic" value="{{topic.name}}" maxlength="40" id='topic' autocomplete="off">
+				{% else %}
+					<input type = 'text' name="topic" placeholder="Topic" maxlength="40" id='topic' autocomplete="off">
+				{% endif %}
+				<div class='topicSuggest'><li id="suggestions"></li></div>
+			</div>
+			
+			{% if userBlog %}
+			<div class='content'>
+				<ul>
+					<li>
+						<label>Prerequisites</label>
+						{% if userBlog.preRequisites %}
+						<textarea name='preRequisites' class='preRequisites' id='preRequisites'>{{userBlog.preRequisites}}</textarea>
+						{% else %}
+						<textarea name='preRequisites' class='preRequisites' id='preRequisites'></textarea>
+						{% endif %}
+
+					</li>
+					<li>
+						<label>Roadmap</label>
+						{% if userBlog.blogContent %}
+						<textarea name='blogContent' class='blogContent' id='blogContent' >{{userBlog.blogContent}}</textarea>
+						{% else %}
+						<textarea name='blogContent' class='blogContent' id='blogContent' ></textarea>
+						{% endif %}
+					</li>
+					<li>
+						<input type='hidden' name='userId' value='{{user.id}}'>
+					</li>
+					<li>
+						<input type='hidden' name='draftBool' value='' id='draftBool'>
+					</li>
+					<div id=errorMessage style='display:none'><p>Some blog field hasn't been filled!</p></div>
+					<li id='submit'> 
+						<input type='submit' class='draftButton' style='display:none' value="Save as Draft" id='draftBlog'>
+						<input type='submit' class='submitButton'value='Submit' id='submitBlog'>
+					</li>
+				</ul>
+			</div>
+			{% else %}
+			<div class='content'>
+				<ul>
+					<li>
+						<label>Prerequisites</label>
+						{% if userDraft.preRequisites %}
+						<textarea name='preRequisites' class='preRequisites' id='preRequisites'>{{userDraft.preRequisites}}</textarea>
+						{% else %}
+						<textarea name='preRequisites' class='preRequisites' id='preRequisites'></textarea>
+						{% endif %}
+
+					</li>
+					<li>
+						<label>Roadmap</label>
+						{% if userDraft.blogContent %}
+						<textarea name='blogContent' class='blogContent' id='blogContent'>{{userDraft.blogContent}}</textarea>
+						{% else %}
+						<textarea name='blogContent' class='blogContent' id='blogContent'></textarea>
+						{% endif %}
+					</li>
+					<li>
+						<input type='hidden' name='userId' value='{{user.id}}'>
+					</li>
+					<li>
+						<input type='hidden' name='draftBool' value='' id='draftBool'>
+					</li>
+					<div id=errorMessage style='display:none'><p>Some blog field hasn't been filled!</p></div>
+					<li id='submit'> 
+						<input type='submit' class='draftButton' value="Save as Draft" id='draftBlog'>
+						<input type='submit' class='submitButton'value='Submit' id='submitBlog'>
+					</li>
+				</ul>
+			</div>
+			{% endif %}
+		</form>
+		<script src = "{% static 'blog/writeBlog.js' %}"></script>
+	</div>
+
+	<div class='foot'>
+		<footer>
+			<p id='contactInfo'><span id='contact'>Contact Us</span><br /><a href="mailto:mail2learned@gmail.com">mail2learned@gmail.com</a></p>
+			<p id='copyrights'>&copy 2020 by LearnEd. All rights reserved.</p>
+		</footer>
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
