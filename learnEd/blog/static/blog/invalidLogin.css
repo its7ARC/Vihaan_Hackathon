@@ -1,0 +1,204 @@
+@font-face {
+font-family: "Roboto Condensed";
+src: url('fonts/Roboto Condensed/RobotoCondensed-Light.ttf');
+}
+
+body{
+
+	font-family: 'Roboto Condensed',sans-serif, Arial;
+	color:black;
+	font-size:18px;
+	padding:none;
+	margin:none;
+	box-sizing:border-box;
+	background:#222 url(images/backImg1.jpg) no-repeat center top;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:center;
+	align-items:center;
+	height:100vh;
+}
+
+ul{
+	list-style-type:none;
+}
+
+header{
+	margin:0px 10px 30px 10px;
+	padding:2px;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:flex-start;
+	align-items:center;
+}
+
+header blockquote{
+	margin:0px 2px;
+	padding:2px;
+
+}
+
+h1{
+	font-size:60px;
+	padding:0px;
+	margin:0px;
+}
+
+
+.loginBlock{
+	background-color:white;
+	padding:40px 20px 80px 0px;
+	margin:-20px 40px 20px 10px;
+	width:800px;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:flex-start;
+	align-items:center;
+	box-shadow:2px 2px 3px 4px white;
+}
+
+.login{
+	display:flex;
+	flex-flow:column;
+	justify-content:flex-start;
+	align-items:center;
+}
+
+.login form{
+	margin-right:20px;
+}
+
+.submitButton{
+	margin:2px -150px 2px 0px;
+	background-color:#084CB8;
+	font:inherit;
+	font-size:18px;
+	color:white;
+	border:none;
+	outline:none;
+	padding:2px 8px;
+}
+
+.submitButton:hover{
+	background-color:#1A54AF;
+}
+
+.forgotPassword{
+	margin:8px 152px 2px -148px;
+	font-size:16px;
+	text-decoration:none;
+	color:gray;
+}
+
+.forgotPassword:hover{
+	text-decoration:underline;
+}
+
+.signUp a{
+	margin:0px 4px 40px 4px;
+	padding:4px 4px 40px 4px;
+	text-decoration:none;
+	color:#143E82;
+}
+
+.signUp a:hover{
+	text-decoration:underline;
+}
+
+
+form{
+	margin:0px 0px 0px -34px;
+}
+
+form ul li{
+	display:flex;
+	flex-flow:row;
+	justify-content:center;
+	align-items:center;
+	margin:6px;
+}
+
+form ul li label{
+	font-size:20px;
+	margin:0px 4px;
+	width:100px;
+}
+
+input{
+	font-size:17px;
+	padding:3px 8px;
+}
+
+.loginError{
+	margin:0px 10px 4px 0px;
+	padding:4px;
+	font-size:16px;
+	color:#D00606;
+	text-transform:uppercase;
+}
+.loginError p{
+	margin:0px;
+	padding:0px;
+
+}
+
+.iconBack{
+	background-color:white;
+	font-size:26px;
+	border-radius:20px;
+	margin:4px 2px;
+}
+
+.iconBack img{
+	margin:0px 0px -6px 0px;
+}
+
+.altLogin{
+	border-width:1px 0px 0px 0px;
+	border-color:gray;
+	border-style:solid;
+}
+.altLogin ul{
+	list-style-type: none;
+	margin: 40px 10px 10px 10px;
+	padding: 0px;
+	display:flex;
+	justify-content:center;
+}
+
+.altLogin ul li a{
+	font:inherit;
+	font-size:18px;
+	text-decoration:none;
+	color:white;
+	text-transform:uppercase;
+	text-align:center;
+	
+	display:block;
+	box-sizing:border-box;
+	width:230px;
+	padding:10px 2px;
+	border-radius:8px;
+	margin:2px 3px;	
+	border:none;
+	outline:none;
+
+	transition:background-color 0.2s;
+}
+
+#facebookLogin{
+	background-color:#3b5998;
+}
+#googleLogin{
+	background-color:#FF0000;
+}
+
+#facebookLogin:hover{
+	background-color:#4A7BC8
+}
+#googleLogin:hover{
+	background-color:#FF6464 
+}
+
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>LearnEd Blog</title>
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'blog/userDrafts.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	<div id="nav">
+	<nav>
+		<ul>
+			<li id='title'><a href="{% url 'blog:search' %}">LearnEd</a></li>
+			<li id = 'write'><a href="{% url 'blog:writeBlog1' %}">Write</a></li>
+			<li id='aboutUs'><a href="{% url 'blog:aboutUs' %}">About Us</a></li>
+			{% if user.is_authenticated %}
+			<li id = 'user' ><a href="{% url 'blog:userAccount'%}">{{user.username}}</a>
+			<div class='dropdown-content'>
+				<ul>
+					<li><a href="{% url 'blog:userBlogs' %}">Your Blogs </a></li>
+					<li><a href="{% url 'blog:userDrafts' %}">Drafts </a></li>
+					<li><a href="#">Bookmarks</a></li>
+					<li><a href="{% url 'blog:logout' %}">LogOut </a></li>
+				</ul>
+			</div>
+			</li>
+			{% else %}
+			<li id='login'><a href="{% url 'blog:login' %}">Login</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+	</div>
+	<div class='userDrafts'>
+		<div class='header'>
+			<h1>Your Drafts</h1>
+		</div>
+		{% if userDrafts %}
+		<div class='content'>
+			<div class='drafts'>
+			<ul>
+			{% for draft in userDrafts %}
+			<li>
+				<div class='draft'>
+					<a href="{% url 'blog:writeBlog3' draft.topic.id %}">| {{draft.topic.name}}</a>
+				</div>
+			</li>
+			{% endfor %}
+			</ul>
+			</div>
+			<div class='sidebar'></div>
+		</div>
+		{% else %}
+		<div class='content'>
+			<div class='noDrafts'>	
+				<p>You dont have any drafts.</p>
+				<a href="{% url 'blog:writeBlog1' %}" id="writeLink" >Write a blog</a>
+			</div>
+			<div class='sidebar'></div>
+		</div>
+		{% endif %}
+	</div>
+	<div class='foot'>
+		<footer>
+			<p id='contactInfo'><span id='contact'>Contact Us</span><br /><a href="mailto:mail2learned@gmail.com">mail2learned@gmail.com</a></p>
+			<p id='copyrights'>&copy 2020 by LearnEd. All rights reserved.</p>
+		</footer>
+	</div>
+
+		
+</body>
+</html>
+
+

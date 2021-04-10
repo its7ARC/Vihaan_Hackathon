@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>LearnEd Blog</title>
+	{% load static %}
+	<link rel='stylesheet' href="{% static 'blog/edit.css' %}">
+</head>
+<body>
+	<div id="nav">
+	<nav>
+		<ul>
+			<li id='title'><a href="{% url 'blog:search' %}">LearnEd</a></li>
+			<li id = 'write'><a href="{% url 'blog:writeBlog1' %}">Write</a></li>
+			<li id='aboutUs'><a href="{% url 'blog:aboutUs' %}">About Us</a></li>
+			{% if user.is_authenticated %}
+			<li id = 'user' ><a href="{% url 'blog:userAccount'%}">{{user.username}}</a>
+			<div class='dropdown-content'>
+				<ul>
+					<li><a href="{% url 'blog:userBlogs' %}">Your Blogs </a></li>
+					<li><a href="{% url 'blog:userDrafts' %}">Drafts </a></li>
+					<li><a href="#">Bookmarks</a></li>
+					<li><a href="{% url 'blog:logout' %}">LogOut </a></li>
+				</ul>
+			</div>
+			</li>
+			{% else %}
+			<li id='login'><a href="{% url 'blog:login' %}">Login</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+	</div>
+	<div class='editAccount'>
+		<div class='header'>
+			<h1>Welcome Anshuman</h1>
+		</div>
+
+		<div class='editForm'>
+			<form action="." method='POST' id="signUpForm" enctype = "multipart/form-data">
+				{% csrf_token %}
+				<ul>
+					{{user_form.as_ul}}
+					<li id='DOB'><label>Date of birth</label>{{profile_form.date_of_birth}}</li>
+					<li id='description'><label>Description</label>{{profile_form.description}}</li>
+					<li><label>Employment</label>{{profile_form.employment}}</li>
+					<li><label>Qualification</label>{{profile_form.qualification}}</li>
+					<li><label>Education</label>{{profile_form.education}}</li>
+					<!--<li id='photo'><label>Profile Picture</label>{{profile_form.photo}}</li>-->
+					<li><a href="{% url 'blog:password_change' %}" class='submitButton' id='passwordChangeButton'>Change Password</a></li>
+					<li><input type='submit' value='Save Changes' class='submitButton' id='submitForm'></li>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+	<script type='text/javascript'>
+		DOB = document.getElementById('DOB');
+		dob = DOB.children[1];
+		dob.placeholder = 'yyyy-mm-dd';
+	</script>
+
+	<div class='foot'>
+		<footer>
+			<p id='contactInfo'><span id='contact'>Contact Us</span><br /><a href="mailto:mail2learned@gmail.com">mail2learned@gmail.com</a></p>
+			<p id='copyrights'>&copy 2020 by LearnEd. All rights reserved.</p>
+		</footer>
+	</div>
+</body>
+</html>
+
+
+

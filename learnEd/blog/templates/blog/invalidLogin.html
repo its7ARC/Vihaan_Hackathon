@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>LearnEd</title>
+	{% load static %}
+	<link href="{% static 'blog/invalidLogin.css' %}" rel="stylesheet">
+</head>
+
+<body>
+	<div class='loginBlock'>
+		<header>
+			<h1 class='title'>LearnEd</h1>
+			<blockquote class='tagline'>Community for Learners</blockquote>
+		</header>
+		 
+		<div class='login'>
+			<form action="{% url 'blog:login' %}" method='POST'>
+				{% csrf_token %}
+				<ul>
+					<li><label>Email: </label>{{form.username}}</li>   <!--form yaha kaha se import?-->
+					<li><label>Password: </label>{{form.password}}</li> 
+					<li>
+						<a href="{% url 'blog:password_reset' %}" class='forgotPassword'>Forgot Password?</a>
+						<input type='submit' value='LogIn' class='submitButton'>
+					</li>
+				</ul>
+			</form>
+			<div class='loginError'><p>Incorrect Username or Password.</p></div>
+			<div class='altLogin'>
+				<ul>
+					<li><a href="{% url 'social:begin' 'facebook'%}" id='facebookLogin'><span class='iconBack'><img src="{% static 'blog/images/facebookIcon.png' %}" alt="" /></span>  Login with Facebook</a></li>   <!--redirects to dashboard-->
+					<li><a href="#" id='googleLogin'><span class='iconBack'><img src="{% static 'blog/images/googleIcon.png' %}" alt="" /></span>  Login with Google</a></li>
+				</ul>
+			</div>	
+		</div>
+		<div class='signUp'>
+			<p>Dont have an account? <a href="{% url 'blog:register' %}">Sign Up</a></p>
+		</div>
+	</div>
+</body>
