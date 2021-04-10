@@ -1,0 +1,228 @@
+/*Contains all transitions for navbar*/
+
+@font-face {
+font-family: "Roboto Condensed";
+src: url('fonts/Roboto Condensed/RobotoCondensed-Light.ttf');
+}
+
+
+body{
+
+	font-family: 'Roboto Condensed',sans-serif,Arial;
+	font-size:19px;
+	color:black;
+	background-color: #222222
+	padding:0px;
+	margin:0px;
+	box-sizing:border-box;
+}
+
+
+#title{
+	flex-grow:10;
+	text-align:left;
+}
+
+#title a:hover{
+	border-width:0px;
+	border-color:black;
+}
+
+
+
+nav ul{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	display:flex;
+	justify-content:space-between;
+	background-color:#101010;
+}
+
+nav ul li a,button{
+	font:inherit;
+	font-size:20px;
+	text-decoration:none;
+	color:white;
+	text-transform:uppercase;
+	text-align:center;
+	
+	display:block;
+	box-sizing:border-box;
+	width:141px;
+	padding:14px;
+	border-radius:4px;
+	margin:2px;
+	background-color:#101010;
+	outline:none;
+	border-width:0px 0px 2px 0px;
+	border-color: #101010;
+	border-style: solid;
+
+	transition:border-width 0.2s;
+
+}
+
+nav ul li a:hover{
+	border-color: white;
+}
+
+.dropdown-content{
+	display:none;
+	position:absolute;
+	border-radius:4px;
+	z-index:1;
+	padding:4px 0px 0px 0px;
+	margin:0px;
+
+}
+
+.dropdown-content ul{
+	background-color:white;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:flex-start;
+}
+
+.dropdown-content ul li a{
+	background-color:white;
+	font:inherit;
+	font-size:18px;
+	color:black;
+	text-align:right;
+	width:136px;
+	padding:14px;
+	margin:2px;
+	border-color:white;
+	transition:background-color 0.2s;
+}
+
+.dropdown-content ul li a:hover{
+	background-color:#EDEDED;
+	color:black;
+}
+
+
+#user:hover .dropdown-content{
+	display:flex;
+	flex-flow:column nowrap;
+}
+
+
+/*-------------------*/
+
+ul{
+	list-style-type:none;
+}
+
+.header{
+	background: linear-gradient(0deg, rgba(0,48,97,1) 0%, rgba(0,46,93,1) 7%, rgba(0,31,62,1) 57%, rgba(0,14,28,1) 100%);
+	background-size:cover;
+	color:white;
+	display:flex;
+	flex-flow:row nowrap;
+	justify-content:center;
+	align-items:center;
+	width:100%;
+}
+
+.header h1{
+	width:1000px;
+	text-align:left;
+	padding:30px;
+	margin:0px 40px;
+}
+
+
+.userAccount{
+	width:100%;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:center;
+	align-items:center;
+	font-size:18px;
+
+}
+
+
+.userInfo{
+	width:1000px;
+	min-height:56vh;
+	padding:20px 30px;
+	margin:20px 40px 20px 40px;
+	font-family:sans-serif,Arial;
+	font-weight:lighter;
+}
+
+.userInfo dl{
+	margin:0px 40px;
+}
+
+dl dt{
+	padding:10px;
+	width:160px;
+	margin:4px 0px -10px 0px;
+}
+dl dd{
+	padding:10px;
+}
+
+
+#editInfo ul li a{
+	margin:20px 40px 2px 40px;
+	width:140px;
+	background-color:#084CB8;
+	border-radius:2px;
+	font:inherit;
+	font-size:18px;
+	color:white;
+	padding:8px 30px;
+	text-decoration:none;
+
+	transition:background-color 0.2s;
+}
+
+#editInfo ul li a:hover{
+	background-color:#1A54AF;
+}
+
+
+/*-----------------*/
+
+
+.foot{
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:center;
+	align-items:center;
+	box-sizing:border-box;
+	width:100%;
+	margin:96px 0px 0px 0px;
+	background-image:linear-gradient(180deg,#202020,#404040);
+	color:white;
+	font-size:19px;
+}
+
+footer{
+	text-align:center;
+	padding:30px 4px 30px 4px;
+	margin:4px;
+}
+
+#contact{
+	display:block;
+	margin:-20px;
+}
+
+#contactInfo a{
+	text-decoration:none;
+	color:white;
+}
+
+#contactInfo a:hover{
+	text-decoration:underline;
+	color:white;
+}
